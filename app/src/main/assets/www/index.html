@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>NEXUS FLOAT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="panel">
+  <header class="top">
+    <div class="brand"><span class="logo">N</span><span>NEXUS FLOAT</span></div>
+    <button class="icon-btn" id="btnClose" type="button" aria-label="Tutup panel">✕</button>
+  </header>
+
+  <main class="body">
+    <!-- CATATAN -->
+    <section id="tab-notes" class="tab">
+      <div id="notesList">
+        <div class="row">
+          <div class="chips scroll" id="noteFilter"></div>
+          <button class="btn sm primary" id="noteNew" type="button">+ Baru</button>
+        </div>
+        <ul id="noteItems" class="list"></ul>
+        <p id="noteEmpty" class="muted" hidden>Belum ada catatan. Ketuk “+ Baru” untuk menyimpan build hero, emblem, spell, atau strategi.</p>
+      </div>
+      <div id="noteEditor" hidden>
+        <div class="row">
+          <button class="btn sm" id="noteBack" type="button">← Kembali</button>
+          <span id="noteSaved" class="muted sm">Tersimpan</span>
+          <button class="btn sm danger" id="noteDelete" type="button">Hapus</button>
+        </div>
+        <input id="noteTitle" class="field" type="text" maxlength="60" placeholder="Judul (mis. Build Gusion)" autocomplete="off">
+        <div class="chips" id="noteTags"></div>
+        <textarea id="noteBody" class="field area" maxlength="4000" placeholder="Hero, emblem, spell, item, strategi…"></textarea>
+      </div>
+    </section>
+
+    <!-- WAKTU -->
+    <section id="tab-time" class="tab" hidden>
+      <div class="seg" id="timeSeg">
+        <button type="button" data-mode="sw" class="on">Stopwatch</button>
+        <button type="button" data-mode="tm">Timer</button>
+      </div>
+      <div id="swView">
+        <div class="clock" id="swDisplay">00:00.0</div>
+        <div class="row center">
+          <button class="btn primary lg" id="swToggle" type="button">Mulai</button>
+          <button class="btn lg" id="swReset" type="button">Reset</button>
+        </div>
+      </div>
+      <div id="tmView" hidden>
+        <div class="clock" id="tmDisplay">05:00</div>
+        <div class="chips center" id="tmPresets">
+          <button type="button" class="chip" data-set="60000">1m</button>
+          <button type="button" class="chip" data-set="180000">3m</button>
+          <button type="button" class="chip" data-set="300000">5m</button>
+          <button type="button" class="chip" data-set="600000">10m</button>
+        </div>
+        <div class="chips center" id="tmAdjust">
+          <button type="button" class="chip" data-add="-60000">−1m</button>
+          <button type="button" class="chip" data-add="-10000">−10d</button>
+          <button type="button" class="chip" data-add="10000">+10d</button>
+          <button type="button" class="chip" data-add="60000">+1m</button>
+        </div>
+        <div class="row center">
+          <button class="btn primary lg" id="tmToggle" type="button">Mulai</button>
+          <button class="btn lg" id="tmReset" type="button">Reset</button>
+        </div>
+        <p id="tmDone" class="done" hidden>⏰ Waktu habis</p>
+      </div>
+    </section>
+
+    <!-- KALKULATOR -->
+    <section id="tab-calc" class="tab" hidden>
+      <div class="calc-disp">
+        <div id="calcExpr" class="expr">&nbsp;</div>
+        <div id="calcOut" class="out">0</div>
+      </div>
+      <div class="keys" id="calcKeys"></div>
+    </section>
+
+    <!-- PENGATURAN -->
+    <section id="tab-settings" class="tab" hidden>
+      <div class="card">
+        <label>Warna bubble</label>
+        <div class="swatches" id="swatches"></div>
+      </div>
+      <div class="card">
+        <label for="rSize">Ukuran bubble <b id="vSize"></b></label>
+        <input type="range" id="rSize" min="40" max="80" step="4">
+      </div>
+      <div class="card">
+        <label for="rBOp">Transparansi bubble <b id="vBOp"></b></label>
+        <input type="range" id="rBOp" min="30" max="100" step="5">
+      </div>
+      <div class="card">
+        <label for="rPOp">Transparansi panel <b id="vPOp"></b></label>
+        <input type="range" id="rPOp" min="50" max="100" step="5">
+      </div>
+      <div class="card row">
+        <label for="tSnap">Auto-snap ke tepi layar</label>
+        <button type="button" role="switch" id="tSnap" class="switch" aria-checked="true"></button>
+      </div>
+      <button class="btn danger block" id="btnStop" type="button">Hentikan floating panel</button>
+      <p class="muted sm" id="about"></p>
+    </section>
+  </main>
+
+  <nav class="tabs" id="tabs">
+    <button type="button" data-tab="notes" class="on"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/></svg><span>Catatan</span></button>
+    <button type="button" data-tab="time"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg><span>Waktu</span></button>
+    <button type="button" data-tab="calc"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Hitung</span></button>
+    <button type="button" data-tab="settings"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>Atur</span></button>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

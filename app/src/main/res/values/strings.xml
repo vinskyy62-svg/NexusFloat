@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NEXUS FLOAT</string>
+    <string name="subtitle">Gaming Floating Panel</string>
+    <string name="perm_ok">Izin overlay: AKTIF</string>
+    <string name="perm_no">Izin overlay: BELUM DIBERIKAN</string>
+    <string name="svc_on">Floating panel: BERJALAN</string>
+    <string name="svc_off">Floating panel: BERHENTI</string>
+    <string name="btn_grant">Beri izin “Tampil di atas aplikasi lain”</string>
+    <string name="btn_start">Aktifkan Floating Panel</string>
+    <string name="btn_stop">Hentikan Floating Panel</string>
+    <string name="need_perm">Beri izin overlay terlebih dahulu</string>
+    <string name="notif_channel">Floating panel</string>
+    <string name="notif_title">NEXUS FLOAT aktif</string>
+    <string name="notif_text">Bubble tampil di atas aplikasi lain. Ketuk untuk membuka aplikasi.</string>
+    <string name="notif_stop">Hentikan</string>
+    <string name="bubble_desc">Bubble NEXUS FLOAT. Ketuk untuk membuka panel.</string>
+    <string name="timer_done">NEXUS FLOAT: timer selesai</string>
+    <string name="limits">Catatan: NEXUS FLOAT hanyalah overlay alat bantu (catatan, stopwatch/timer, kalkulator). Aplikasi ini tidak membaca FPS, ping, suhu, atau data internal game apa pun, dan tidak mengotomatisasi atau memodifikasi game.</string>
+</resources>
